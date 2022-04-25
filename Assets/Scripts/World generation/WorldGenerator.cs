@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldGenerator : MonoBehaviour
+public class WorldGenerator : ScriptableObject
 {
-    private Dictionary<ElementId, GameObject> _factories;
+    private Registry _factories;
     private IBiomeGenerator _biomeGenerator;
     private INoise _heightNoise;
 
     public static float CELL_SIZE { get=>30; }
 
-    public void Init(IBiomeGenerator biomeGenerator, INoise heightNoise, Dictionary<ElementId, GameObject> factories)
+    public void Init(IBiomeGenerator biomeGenerator, INoise heightNoise, Registry factories)
     {
         _factories = factories;
         _biomeGenerator = biomeGenerator;
@@ -25,9 +25,9 @@ public class WorldGenerator : MonoBehaviour
             throw new Exception("Generator has not been initialised yet");
         }
         ElementId id = _biomeGenerator.AccessBiome(x, y).AccessBiomeElement(x, y, _heightNoise.Evaluate(x, y));
-        if (_factories.ContainsKey(id) && _factories[id] != null)
+        if (_factories.GetElement(id) != null)
         {
-            GameObject o = Instantiate(_factories[id], new Vector2(x * CELL_SIZE, y * CELL_SIZE), Quaternion.identity);
+            GameObject o = Instantiate(_factories.GetElement(id), new Vector2(x * CELL_SIZE, y * CELL_SIZE), Quaternion.identity);
             SpriteRenderer renderer = o.GetComponent<SpriteRenderer>();
             if (renderer == null)
             {

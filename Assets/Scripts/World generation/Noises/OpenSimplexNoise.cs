@@ -18,6 +18,11 @@ public class OpenSimplexNoise : INoise
     private byte[] perm3D;
     private byte[] perm4D;
 
+
+    private double zIndex;
+
+    private static double Z_INDEX_INC = 20;
+
     private static double[] gradients2D = new double[]
     {
              5,  2,    2,  5,
@@ -197,6 +202,8 @@ public class OpenSimplexNoise : INoise
         perm3D = new byte[256];
         perm4D = new byte[256];
         var source = new byte[256];
+        this.zIndex = Z_INDEX_INC;
+        Z_INDEX_INC += Z_INDEX_INC;
         for (int i = 0; i < 256; i++)
         {
             source[i] = (byte)i;
@@ -394,11 +401,9 @@ public class OpenSimplexNoise : INoise
         return value * NORM_4D;
     }
 
-    private 
-
     public float Evaluate(float x, float y)
     {
-        return (float)Evaluate((double)x, (double)y);
+        return (float)Evaluate((double)x, (double)y, zIndex);
     }
 
     private class Contribution2

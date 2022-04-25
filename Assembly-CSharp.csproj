@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{32C3BDE6-E125-3128-82C1-25D0441455A3}</ProjectGuid>
+    <ProjectGuid>{0AF3AB37-CD24-B7B7-2046-F45DD321C3BF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -60,7 +60,11 @@
     <Compile Include="Assets\Scripts\World generation\WorldGenerator.cs" />
     <Compile Include="Assets\Scripts\World generation\Biomes\IBiome.cs" />
     <Compile Include="Assets\Scripts\World generation\Features\ActiveOnWalkFeature.cs" />
+    <Compile Include="Assets\Scripts\Items\ElementHolder.cs" />
+    <Compile Include="Assets\Scripts\World generation\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Items\ItemIds.cs" />
+    <Compile Include="Assets\Scripts\World generation\Noises\OpenSimplexNoise.cs" />
+    <Compile Include="Assets\Scripts\Items\Registry.cs" />
     <Compile Include="Assets\Scripts\Items\Loots\RandomLootSpecifier.cs" />
     <Compile Include="Assets\Scripts\Items\Loots\LootSpecifier.cs" />
     <Compile Include="Assets\Scripts\World generation\Biomes\IBiomeGenerator.cs" />
@@ -69,7 +73,7 @@
     <Compile Include="Assets\Scripts\Exceptions\IllegalHitException.cs" />
     <Compile Include="Assets\Scripts\World generation\Noises\INoise.cs" />
     <Compile Include="Assets\Scripts\Effects\Effect.cs" />
-    <Compile Include="Assets\Scripts\World generation\Noises\OpenSimplexNoise.cs" />
+    <Compile Include="Assets\Scripts\World generation\Biomes\Biomes\AsteroidBeltBiome.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
